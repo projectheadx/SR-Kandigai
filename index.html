@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>சித்தராஜ கந்திகை | கிராம வலைத்தளம்</title>
+	<!-- Font Awesome 6 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+	<!-- Bootstrap 5 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<!-- AOS Animation -->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Poppins', 'Segoe UI', 'Latha', 'Tamil', sans-serif;
+			background: #f8f5f0;
+			color: #1e3a2f;
+			scroll-behavior: smooth;
+		}
+
+		/* Custom Font */
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+		/* Navbar */
+		.tm-navbar {
+			background: rgba(0, 0, 0, 0.92);
+			transition: all 0.3s;
+			backdrop-filter: blur(10px);
+			padding: 15px 0;
+		}
+
+			.tm-navbar.scroll {
+				background: #0a2e1a !important;
+				box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+				padding: 10px 0;
+			}
+
+		.navbar-brand {
+			font-size: 1.6rem;
+			font-weight: 700;
+			letter-spacing: 1px;
+		}
+
+		.navbar-brand, .nav-link {
+			color: #fff8e7 !important;
+			font-weight: 500;
+		}
+
+		.nav-link {
+			margin: 0 5px;
+			transition: 0.3s;
+		}
+
+			.nav-link:hover {
+				color: #ffc107 !important;
+				transform: translateY(-2px);
+			}
+
+		/* Hero Parallax */
+		.tm-parallax {
+			background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('img/sr-kanrd.jpg');
+			background-size: cover;
+			background-attachment: fixed;
+			background-position: center;
+		}
+
+		.tm-parallax-2 {
+			background-image: linear-gradient(rgba(5, 40, 20, 0.85), rgba(5, 40, 20, 0.85)), url('https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=1600');
+			background-attachment: fixed;
+			background-size: cover;
+		}
+
+		.tm-hero-text-container {
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			color: white;
+		}
+
+		.tm-hero-title {
+			font-size: 4.5rem;
+			font-weight: 800;
+			letter-spacing: 2px;
+			animation: fadeInUp 1s ease;
+		}
+
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.tm-section-pad-top {
+			padding: 90px 0;
+		}
+
+		.tm-text-primary {
+			color: #2d6a4f !important;
+		}
+
+		.tm-btn-primary {
+			background: linear-gradient(135deg, #2d6a4f, #1b4d3e);
+			color: white;
+			padding: 12px 35px;
+			border-radius: 50px;
+			text-decoration: none;
+			display: inline-block;
+			font-weight: 600;
+			transition: 0.3s;
+			border: none;
+		}
+
+			.tm-btn-primary:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+				color: white;
+			}
+
+		/* Cards */
+		.card-hover {
+			transition: all 0.3s;
+			border: none;
+			border-radius: 20px;
+			background: white;
+			box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+		}
+
+			.card-hover:hover {
+				transform: translateY(-8px);
+				box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+			}
+
+		.progress-bar-custom {
+			background: linear-gradient(90deg, #2d6a4f, #40916c);
+			border-radius: 10px;
+		}
+
+		.progress {
+			border-radius: 10px;
+			height: 12px;
+		}
+
+		/* Table Modern */
+		.modern-table {
+			background: white;
+			border-radius: 20px;
+			overflow: hidden;
+			box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+		}
+
+			.modern-table thead th {
+				background: linear-gradient(135deg, #2d6a4f, #1b4d3e);
+				color: white;
+				font-weight: 600;
+				padding: 15px;
+				border: none;
+			}
+
+			.modern-table tbody td {
+				padding: 12px 15px;
+				vertical-align: middle;
+			}
+
+			.modern-table tbody tr:hover {
+				background: #f0f7f3;
+			}
+
+		/* Gallery */
+		.gallery-link {
+			position: relative;
+			display: block;
+			overflow: hidden;
+			border-radius: 20px;
+			text-decoration: none;
+		}
+
+			.gallery-link img {
+				transition: transform 0.5s ease;
+				width: 100%;
+				height: 260px;
+				object-fit: cover;
+			}
+
+			.gallery-link:hover img {
+				transform: scale(1.08);
+			}
+
+		.overlay {
+			position: absolute;
+			bottom: -60px;
+			left: 0;
+			right: 0;
+			background: linear-gradient(0deg, rgba(0,0,0,0.8), transparent);
+			color: white;
+			padding: 15px;
+			text-align: center;
+			font-weight: 600;
+			transition: 0.3s;
+		}
+
+		.gallery-link:hover .overlay {
+			bottom: 0;
+		}
+
+		/* Contact Icons */
+		.contact-icon {
+			background: rgba(255,255,255,0.15);
+			padding: 20px;
+			border-radius: 20px;
+			transition: 0.3s;
+		}
+
+			.contact-icon:hover {
+				background: rgba(255,255,255,0.25);
+				transform: translateY(-5px);
+			}
+
+		footer {
+			background: #0a2417;
+			color: #ccc;
+		}
+
+		@media (max-width: 768px) {
+			.tm-hero-title {
+				font-size: 2.2rem;
+			}
+
+			.tm-section-pad-top {
+				padding: 50px 0;
+			}
+
+			.gallery-link img {
+				height: 200px;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg tm-navbar fixed-top" id="tmNav">
+		<div class="container">
+			<a class="navbar-brand" href="#hero">🌾 சித்தராஜ கந்திகை</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon bg-white rounded"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="#intro">📖 அறிமுகம்</a></li>
+					<li class="nav-item"><a class="nav-link" href="#projects">📊 திட்டங்கள்</a></li>
+					<li class="nav-item"><a class="nav-link" href="#services">🆔 சேவைகள்</a></li>
+					<li class="nav-item"><a class="nav-link" href="#gallery">📸 கேலரி</a></li>
+					<li class="nav-item"><a class="nav-link" href="#leaders">👥 தலைவர்கள்</a></li>
+					<li class="nav-item"><a class="nav-link" href="#contact">📞 தொடர்பு</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<section id="hero" class="tm-parallax">
+		<div class="tm-hero-text-container">
+			<div data-aos="fade-up">
+				<h1 class="tm-hero-title">சித்தராஜ கந்திகை </h1>
+				<p class="lead fs-3">கும்மிடிப்பூண்டி தாலுகா | திருவள்ளூர் மாவட்டம்</p>
+				<p class="fs-5">🌾 வளர்ச்சியில் சிறக்கும் எங்கள் சிற்றூர் | 🌴 நலம் சேர்க்கும் ஊராட்சி</p>
+				<a href="#intro" class="tm-btn-primary mt-3">எங்கள் ஊரை அறிய <i class="fas fa-arrow-down ms-2"></i></a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Intro -->
+	<section id="intro" class="tm-section-pad-top">
+		<div class="container">
+			<div class="row align-items-center g-5">
+				<div class="col-lg-6" data-aos="fade-right">
+					<img src="img/the-town-01.jpg" class="img-fluid rounded-4 shadow-lg" alt="Village">
+				</div>
+				<div class="col-lg-6" data-aos="fade-left">
+					<h2 class="tm-text-primary mb-4">📌 கிராம அறிமுகம்</h2>
+					<p class="fs-5"><strong>Siththaraja Kandigai</strong> கும்மிடிப்பூண்டி தாலுக்காவில் அமைந்துள்ள வளமான கிராமம். நெல், கரும்பு, காய்கறி பயிரிடப்படுகிறது. 100% குடிநீர், மின்சாரம், தார்ச்சாலை வசதிகள் பெற்ற கிராமம்.</p>
+					<div class="row mt-4">
+						<div class="col-6">
+							<div class="bg-success bg-opacity-10 p-3 rounded-3 text-center">
+								<i class="fas fa-users fa-2x tm-text-primary"></i>
+								<h4>2,850+</h4>
+								<p>மக்கள் தொகை</p>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="bg-success bg-opacity-10 p-3 rounded-3 text-center">
+								<i class="fas fa-building fa-2x tm-text-primary"></i>
+								<h4>6</h4>
+								<p>வார்டுகள்</p>
+							</div>
+						</div>
+					</div>
+					<a href="#services" class="tm-btn-primary mt-4">சேவைகள் அறிக →</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Projects -->
+	<section id="projects" class="tm-section-pad-top bg-light">
+		<div class="container">
+			<div class="text-center mb-5" data-aos="fade-up">
+				<h2 class="tm-text-primary">📈 வளர்ச்சித் திட்டங்கள்</h2>
+				<p class="text-muted">நடப்பில் உள்ள & முடிவுற்ற திட்டங்கள்</p>
+			</div>
+			<div class="row g-4">
+				<div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+					<div class="card card-hover h-100 p-4">
+						<i class="fas fa-road fa-3x tm-text-primary mb-3"></i>
+						<h4>சாலை விரிவாக்கம்</h4>
+						<p>வார்டு 3 மற்றும் 4-ல் சாலை அகலப்படுத்தும் பணி</p>
+						<div class="progress mb-2"><div class="progress-bar progress-bar-custom" style="width:70%">70%</div></div>
+						<small class="text-muted"><i class="far fa-calendar-alt"></i> முடிவு: ஜூன் 2025</small>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+					<div class="card card-hover h-100 p-4">
+						<i class="fas fa-tint fa-3x tm-text-primary mb-3"></i>
+						<h4>குடிநீர் திட்டம்</h4>
+						<p>புதிய கோபுரம் & பைப்லைன்</p>
+						<div class="progress mb-2"><div class="progress-bar progress-bar-custom" style="width:90%">90%</div></div>
+						<small class="text-muted"><i class="far fa-calendar-alt"></i> முடிவு: மார்ச் 2025</small>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+					<div class="card card-hover h-100 p-4">
+						<i class="fas fa-solar-panel fa-3x tm-text-primary mb-3"></i>
+						<h4>சோலார் விளக்குகள்</h4>
+						<p>50 தெரு விளக்குகள் பொருத்துதல்</p>
+						<div class="progress mb-2"><div class="progress-bar progress-bar-custom" style="width:45%">45%</div></div>
+						<small class="text-muted"><i class="far fa-calendar-alt"></i> முடிவு: ஆகஸ்ட் 2025</small>
+					</div>
+				</div>
+			</div>
+
+			<div class="mt-5" data-aos="fade-up">
+				<h4 class="mb-3">📅 ஆண்டு வாரியான முன்னேற்றம்</h4>
+				<div class="modern-table">
+					<table class="table mb-0">
+						<thead>
+							<tr><th>ஆண்டு</th><th>திட்டம்</th><th>நிதி ஒதுக்கீடு</th><th>நிலை</th><th>சான்று</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>2020</td><td><strong>பஞ்சாயத்து கட்டிடம்</strong></td><td>₹12,00,000</td><td><span class="badge bg-success">✅ முடிந்தது</span></td><td><i class="fas fa-check-circle text-success"></i></td></tr>
+							<tr><td>2022</td><td><strong>மழைநீர் வடிகால்</strong></td><td>₹5,00,000</td><td><span class="badge bg-success">✅ முடிந்தது</span></td><td><i class="fas fa-check-circle text-success"></i></td></tr>
+							<tr><td>2023</td><td><strong>குடிநீர் திட்டம்</strong></td><td>₹8,00,000</td><td><span class="badge bg-success">✅ முடிந்தது</span></td><td><i class="fas fa-check-circle text-success"></i></td></tr>
+							<tr><td>2024</td><td><strong>உடற்பயிற்சி கூடம்</strong></td><td>₹3,50,000</td><td><span class="badge bg-warning">🚧 நடப்பில்</span></td><td><i class="fas fa-spinner fa-pulse"></i></td></tr>
+							<tr><td>2025</td><td><strong>சோலார் விளக்கு திட்டம்</strong></td><td>₹6,00,000</td><td><span class="badge bg-info">📋 திட்டமிடல்</span></td><td><i class="fas fa-clock"></i></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Services -->
+	<section id="services" class="tm-section-pad-top">
+		<div class="container">
+			<div class="text-center mb-5" data-aos="fade-up">
+				<h2 class="tm-text-primary">🆔 குடியுரிமை சேவைகள்</h2>
+				<p class="text-muted">விரைவான & வெளிப்படையான சேவைகள்</p>
+			</div>
+			<div class="row text-center g-4">
+				<div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+					<div class="card-hover p-4 rounded-4">
+						<i class="fas fa-birthday-cake fa-4x tm-text-primary"></i>
+						<h5 class="mt-3">பிறப்பு/இறப்பு சான்றிதழ்</h5>
+						<p class="text-muted">3 நாட்களில் வழங்கப்படும்</p>
+					</div>
+				</div>
+				<div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+					<div class="card-hover p-4 rounded-4">
+						<i class="fas fa-file-alt fa-4x tm-text-primary"></i>
+						<h5 class="mt-3">வருமானச் சான்று</h5>
+						<p class="text-muted">ஆன்லைனில் விண்ணப்பிக்கலாம்</p>
+					</div>
+				</div>
+				<div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+					<div class="card-hover p-4 rounded-4">
+						<i class="fas fa-id-card fa-4x tm-text-primary"></i>
+						<h5 class="mt-3">குடும்ப அட்டை / ஆதார்</h5>
+						<p class="text-muted">திருத்தம் & புதுப்பித்தல்</p>
+					</div>
+				</div>
+			</div>
+			<div class="text-center mt-4">
+				<a href="#" class="tm-btn-primary"><i class="fas fa-qrcode me-2"></i> ஆன்லைன் விண்ணப்பிக்க</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Gallery -->
+	<section id="gallery" class="tm-section-pad-top bg-light">
+		<div class="container">
+			<div class="text-center mb-5" data-aos="fade-up">
+				<h2 class="tm-text-primary">📸 எங்கள் ஊரின் சிறப்பு காட்சிகள்</h2>
+				<p class="text-muted">சித்தராஜ கந்திகை - புகைப்பட தொகுப்பு</p>
+			</div>
+			<div class="row g-4 tm-gallery">
+				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="100">
+					<a href="https://images.pexels.com/photos/172274/pexels-photo-172274.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
+						<img src="https://images.pexels.com/photos/172274/pexels-photo-172274.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Temple">
+						<div class="overlay"><i class="fas fa-search-plus me-1"></i> கிராமக் கோயில்</div>
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
+					<a href="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
+						<img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Farming">
+						<div class="overlay"><i class="fas fa-search-plus me-1"></i> விவசாயக் காட்சி</div>
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
+					<a href="https://images.pexels.com/photos/106852/pexels-photo-106852.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
+						<img src="https://images.pexels.com/photos/106852/pexels-photo-106852.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Lake">
+						<div class="overlay"><i class="fas fa-search-plus me-1"></i> ஊர் ஏரி</div>
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="400">
+					<a href="https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
+						<img src="https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Street">
+						<div class="overlay"><i class="fas fa-search-plus me-1"></i> புதிய சாலை</div>
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="500">
+					<a href="https://images.pexels.com/photos/1438834/pexels-photo-1438834.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
+						<img src="https://images.pexels.com/photos/1438834/pexels-photo-1438834.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Panchayat">
+						<div class="overlay"><i class="fas fa-search-plus me-1"></i> பஞ்சாயத்து அலுவலகம்</div>
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="600">
+					<a href="https://images.pexels.com/photos/2603464/pexels-photo-2603464.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
+						<img src="https://images.pexels.com/photos/2603464/pexels-photo-2603464.jpeg?auto=compress&cs=tinysrgb&w=600" alt="School">
+						<div class="overlay"><i class="fas fa-search-plus me-1"></i> ஊராட்சி பள்ளி</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Farmers -->
+	<section id="farmers" class="tm-section-pad-top">
+		<div class="container">
+			<div class="text-center mb-5" data-aos="fade-up">
+				<h2 class="tm-text-primary">🌱 விவசாயிகள் உதவி மையம்</h2>
+				<p>உழவர்களின் முன்னேற்றத்திற்கான திட்டங்கள்</p>
+			</div>
+			<div class="row g-4">
+				<div class="col-md-6" data-aos="fade-right">
+					<div class="card-hover p-4 h-100">
+						<i class="fas fa-seedling fa-3x tm-text-primary mb-3"></i>
+						<h4>மானிய விதை & உரம்</h4>
+						<p>அரசு மானியத்தில் தரமான விதைகள் மற்றும் உரங்கள் விநியோகம்</p>
+					</div>
+				</div>
+				<div class="col-md-6" data-aos="fade-left">
+					<div class="card-hover p-4 h-100">
+						<i class="fas fa-hand-holding-usd fa-3x tm-text-primary mb-3"></i>
+						<h4>பயிர்காப்பீடு & கடன் திட்டம்</h4>
+						<p>பயிர் இழப்பிற்கான காப்பீடு மற்றும் கடன் வசதிகள்</p>
+					</div>
+				</div>
+			</div>
+			<div class="mt-4 p-3 bg-success bg-opacity-10 rounded-3" data-aos="fade-up">
+				<i class="fas fa-user-tie"></i> <strong>வேளாண்மை அலுவலர்:</strong> திரு. சேகர், 📞 99440 12345
+			</div>
+		</div>
+	</section>
+
+	<!-- Leaders -->
+	<section id="leaders" class="tm-section-pad-top bg-light">
+		<div class="container">
+			<div class="text-center mb-5" data-aos="fade-up">
+				<h2 class="tm-text-primary">👥 ஊர் தலைவர் & நிர்வாகிகள்</h2>
+				<p>உங்கள் சேவையில் நம்ம ஊர் நிர்வாகம்</p>
+			</div>
+			<div class="row g-4 mb-5">
+				<div class="col-md-6" data-aos="fade-right">
+					<div class="card-hover p-4 text-center">
+						<i class="fas fa-user-circle fa-4x tm-text-primary"></i>
+						<h4 class="mt-3">திரு. இராஜேந்திரன்</h4>
+						<p class="text-muted">🗳️ கிராமத் தலைவர்</p>
+						<a href="tel:9876543210" class="btn btn-outline-success btn-sm"><i class="fas fa-phone"></i> 98765 43210</a>
+					</div>
+				</div>
+				<div class="col-md-6" data-aos="fade-left">
+					<div class="card-hover p-4 text-center">
+						<i class="fas fa-user-circle fa-4x tm-text-primary"></i>
+						<h4 class="mt-3">திருமதி. லட்சுமி</h4>
+						<p class="text-muted">🏛️ ஒன்றிய கவுன்சிலர்</p>
+						<a href="tel:9123456789" class="btn btn-outline-success btn-sm"><i class="fas fa-phone"></i> 91234 56789</a>
+					</div>
+				</div>
+			</div>
+
+			<div data-aos="fade-up">
+				<h4 class="mb-3">📋 வார்டு உறுப்பினர்கள்</h4>
+				<div class="modern-table">
+					<table class="table mb-0">
+						<thead><tr><th>வார்டு எண்</th><th>உறுப்பினர் பெயர்</th><th>தொடர்பு எண்</th></tr></thead>
+						<tbody>
+							<tr><td>1</td><td>குமார்</td><td>98765 11111</td></tr>
+							<tr><td>2</td><td>மணிமேகலை</td><td>98765 22222</td></tr>
+							<tr><td>3</td><td>செல்வம்</td><td>98765 33333</td></tr>
+							<tr><td>4</td><td>அண்ணாதுரை</td><td>98765 44444</td></tr>
+							<tr><td>5</td><td>வசந்தி</td><td>98765 55555</td></tr>
+							<tr><td>6</td><td>முகேஷ்</td><td>98765 66666</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="mt-5" data-aos="fade-up">
+				<h4 class="mb-3">🏢 பஞ்சாயத்து ஊழியர்கள்</h4>
+				<div class="modern-table">
+					<table class="table mb-0">
+						<thead><tr><th>பதவி</th><th>பெயர்</th><th>தொடர்பு எண்</th></tr></thead>
+						<tbody>
+							<tr><td>கிராம நிர்வாக அலுவலர் (VAO)</td><td>திரு. சண்முகம்</td><td>94440 11223</td></tr>
+							<tr><td>Junior Assistant</td><td>திருமதி. பூங்கொடி</td><td>98765 44332</td></tr>
+							<tr><td>Bill Collector</td><td>திரு. முனுசாமி</td><td>87654 33221</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Events & Economy Combined -->
+	<section id="events" class="tm-section-pad-top">
+		<div class="container">
+			<div class="row g-5">
+				<div class="col-lg-6" data-aos="fade-right">
+					<h2 class="tm-text-primary mb-4">🎉 விழாக்கள் & நிகழ்வுகள்</h2>
+					<div class="row g-3">
+						<div class="col-sm-6"><div class="card-hover p-3 text-center"><i class="fas fa-temple fa-3x tm-text-primary"></i><h6 class="mt-2">கோயில் திருவிழா</h6><small>ஏப்ரல் 14 - 16</small></div></div>
+						<div class="col-sm-6"><div class="card-hover p-3 text-center"><i class="fas fa-heart fa-3x tm-text-primary"></i><h6 class="mt-2">பொங்கல் விழா</h6><small>ஜனவரி 14</small></div></div>
+						<div class="col-sm-6"><div class="card-hover p-3 text-center"><i class="fas fa-futbol fa-3x tm-text-primary"></i><h6 class="mt-2">கிரிக்கெட் போட்டி</h6><small>மே 1 - 3</small></div></div>
+						<div class="col-sm-6"><div class="card-hover p-3 text-center"><i class="fas fa-hand-holding-heart fa-3x tm-text-primary"></i><h6 class="mt-2">சுகாதார முகாம்</h6><small>மார்ச் 15</small></div></div>
+					</div>
+				</div>
+				<div class="col-lg-6" data-aos="fade-left">
+					<h2 class="tm-text-primary mb-4">🏦 அருகிலுள்ள வசதிகள்</h2>
+					<div class="card-hover p-4">
+						<div class="row g-3">
+							<div class="col-6"><i class="fas fa-university tm-text-primary me-2"></i> Canara Bank</div>
+							<div class="col-6"><i class="fas fa-hospital tm-text-primary me-2"></i> PHC, 3km</div>
+							<div class="col-6"><i class="fas fa-bus tm-text-primary me-2"></i> Gummidipoondi Bus Stand</div>
+							<div class="col-6"><i class="fas fa-train tm-text-primary me-2"></i> Gummidipoondi Railway</div>
+							<div class="col-12"><i class="fas fa-school tm-text-primary me-2"></i> Govt High School</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Grievance -->
+	<section id="grievance" class="tm-section-pad-top bg-light">
+		<div class="container">
+			<div class="row justify-content-center" data-aos="fade-up">
+				<div class="col-lg-8">
+					<h2 class="tm-text-primary text-center mb-4">📢 புகார் & ஆலோசனை</h2>
+					<div class="card-hover p-5">
+						<form action="https://formspree.io/f/xgvogkna" method="POST">
+							<div class="row g-3">
+								<div class="col-md-6"><input type="text" name="name" class="form-control form-control-lg" placeholder="உங்கள் பெயர்" required></div>
+								<div class="col-md-6"><input type="number" name="ward" class="form-control form-control-lg" placeholder="வார்டு எண்" required></div>
+								<div class="col-12"><textarea name="complaint" rows="4" class="form-control" placeholder="புகார் / ஆலோசனை விவரம்"></textarea></div>
+								<div class="col-12"><button type="submit" class="tm-btn-primary w-100"><i class="fab fa-whatsapp me-2"></i> புகார் அனுப்பு</button></div>
+							</div>
+						</form>
+						<p class="small text-muted mt-3 text-center">* உங்கள் புகார் உடனடியாக நம்ம WhatsApp-க்கு அனுப்பப்படும்</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Footer -->
+	<section id="contact" class="tm-parallax-2 text-white tm-section-pad-top">
+		<div class="container">
+			<div class="text-center mb-5" data-aos="fade-up">
+				<h2>📞 தொடர்புக்கு</h2>
+				<p>எங்களை தொடர்பு கொள்ள கீழே உள்ள வழிகளை பயன்படுத்தவும்</p>
+			</div>
+			<div class="row g-4 text-center" data-aos="fade-up">
+				<div class="col-md-4"><div class="contact-icon"><i class="fas fa-phone fa-3x mb-3"></i><br><h5>தொலைபேசி</h5><p>99998 88777</p></div></div>
+				<div class="col-md-4"><div class="contact-icon"><i class="fas fa-envelope fa-3x mb-3"></i><br><h5>மின்னஞ்சல்</h5><p>siththarajapanchayat@gmail.com</p></div></div>
+				<div class="col-md-4"><div class="contact-icon"><i class="fas fa-map-marker-alt fa-3x mb-3"></i><br><h5>முகவரி</h5><p>கும்மிடிப்பூண்டி தாலுகா, திருவள்ளூர் மாவட்டம்</p></div></div>
+			</div>
+			<div class="mt-5" data-aos="fade-up">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15544.162145750345!2d80.117767!3d13.145459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5264b7c0b0b0b1%3A0x0!2sGummidipoondi!5e0!3m2!1sen!2sin!4v1630000000000!5m2!1sen!2sin" width="100%" height="300" style="border:0;border-radius:20px;" allowfullscreen></iframe>
+			</div>
+		</div>
+		<footer class="text-center p-4 mt-5">
+			<p class="mb-0">© 2025 சித்தராஜ கந்திகை ஊராட்சி | நம்ம ஊர் - நம்ம கையேடு</p>
+			<small>Developed with <i class="fas fa-heart text-danger"></i> for our village</small>
+		</footer>
+	</section>
+
+	<!-- Scripts -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init({ duration: 800, once: true });
+
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 80) $('#tmNav').addClass('scroll');
+			else $('#tmNav').removeClass('scroll');
+		});
+
+		$('a[href^="#"]').click(function (e) {
+			e.preventDefault();
+			var target = $(this.getAttribute('href'));
+			if (target.length) $('html,body').animate({ scrollTop: target.offset().top - 70 }, 500);
+		});
+
+		$('.tm-gallery').magnificPopup({
+			delegate: 'a',
+			type: 'image',
+			gallery: { enabled: true, navigateByImgClick: true }
+		});
+	</script>
+</body>
+</html>

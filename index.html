@@ -2,7 +2,7 @@
 <html lang="ta">
 <head>
 	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 	<title>சித்தராஜ கந்திகை | கிராம வலைத்தளம்</title>
 	<!-- Font Awesome 6 -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -24,10 +24,23 @@
 			background: #f8f5f0;
 			color: #1e3a2f;
 			scroll-behavior: smooth;
+			overflow-x: hidden !important;
+			width: 100%;
+			max-width: 100%;
 		}
 
 		/* Custom Font */
 		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+		/* Fix for all containers and potential overflow */
+		.container, .container-fluid, .row, .col, [class*="col-"] {
+			overflow-x: hidden !important;
+		}
+
+		img, iframe, svg, video {
+			max-width: 100%;
+			height: auto;
+		}
 
 		/* Navbar */
 		.tm-navbar {
@@ -35,6 +48,8 @@
 			transition: all 0.3s;
 			backdrop-filter: blur(10px);
 			padding: 15px 0;
+			width: 100%;
+			overflow-x: hidden;
 		}
 
 			.tm-navbar.scroll {
@@ -64,12 +79,19 @@
 				transform: translateY(-2px);
 			}
 
-		/* Hero Parallax */
+		/* Hero Parallax - fixed background for mobile performance */
 		.tm-parallax {
 			background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('img/sr-kanrd.png');
 			background-size: cover;
 			background-attachment: fixed;
 			background-position: center;
+		}
+		/* Fallback for mobile devices where fixed attachment causes issues */
+		@media (max-width: 768px) {
+			.tm-parallax, .tm-parallax-2 {
+				background-attachment: scroll !important;
+				background-position: center center !important;
+			}
 		}
 
 		.tm-parallax-2 {
@@ -85,10 +107,11 @@
 			justify-content: center;
 			text-align: center;
 			color: white;
+			padding: 0 15px;
 		}
 
 		.tm-hero-title {
-			font-size: 4.5rem;
+			font-size: 4rem;
 			font-weight: 800;
 			letter-spacing: 2px;
 			animation: fadeInUp 1s ease;
@@ -156,13 +179,22 @@
 			height: 12px;
 		}
 
-		/* Table Modern */
+		/* Table Modern - overflow fix for small screens */
 		.modern-table {
 			background: white;
 			border-radius: 20px;
-			overflow: hidden;
+			overflow-x: auto;
+			overflow-y: hidden;
 			box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+			width: 100%;
+			display: block;
+			-webkit-overflow-scrolling: touch;
 		}
+
+			.modern-table table {
+				min-width: 500px;
+				width: 100%;
+			}
 
 			.modern-table thead th {
 				background: linear-gradient(135deg, #2d6a4f, #1b4d3e);
@@ -236,6 +268,7 @@
 			color: #ccc;
 		}
 
+		/* Fix for mobile views - no horizontal scroll */
 		@media (max-width: 768px) {
 			.tm-hero-title {
 				font-size: 2.2rem;
@@ -248,6 +281,97 @@
 			.gallery-link img {
 				height: 200px;
 			}
+
+			/* Ensure all text and containers respect boundaries */
+			body, html {
+				width: 100%;
+				overflow-x: hidden;
+				position: relative;
+			}
+
+			/* Fix card padding on mobile */
+			.card-hover {
+				padding: 1.25rem !important;
+			}
+
+			/* Adjust navbar brand font size */
+			.navbar-brand {
+				font-size: 1.2rem;
+			}
+
+			/* Buttons full width on extremely small devices */
+			.tm-btn-primary {
+				padding: 10px 20px;
+				font-size: 0.9rem;
+			}
+
+			/* Better gap for intro section */
+			.row.g-5 {
+				--bs-gutter-y: 1.5rem;
+			}
+
+			/* Ensure contact iframe not overflow */
+			iframe {
+				max-width: 100%;
+				height: 250px;
+			}
+
+			/* Fix table scroll hint */
+			.modern-table::after {
+				content: "↔️ திரையில் இடப்புறம் நகர்த்தவும்";
+				display: block;
+				text-align: center;
+				font-size: 11px;
+				color: #555;
+				margin-top: 5px;
+			}
+		}
+
+		/* Extra small devices */
+		@media (max-width: 480px) {
+			.tm-hero-title {
+				font-size: 1.8rem;
+			}
+
+			.lead.fs-3 {
+				font-size: 1rem !important;
+			}
+
+			.fs-5 {
+				font-size: 0.9rem !important;
+			}
+
+			.nav-link {
+				padding: 6px 10px;
+				font-size: 0.85rem;
+			}
+		}
+
+		/* ensure no unexpected overflow from any element */
+		section, div, article, footer, header, nav {
+			overflow-x: hidden !important;
+		}
+
+		/* Fix for form controls and inputs */
+		input, textarea, select, button {
+			max-width: 100%;
+		}
+
+		/* Safe images and flex items */
+		img, .img-fluid {
+			max-width: 100%;
+			height: auto;
+		}
+
+		/* row adjustments */
+		.row {
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.container {
+			padding-left: 15px;
+			padding-right: 15px;
 		}
 	</style>
 </head>
@@ -288,14 +412,14 @@
 	<!-- Intro -->
 	<section id="intro" class="tm-section-pad-top">
 		<div class="container">
-			<div class="row align-items-center g-5">
+			<div class="row align-items-center g-4 g-lg-5">
 				<div class="col-lg-6" data-aos="fade-right">
-					<img src="img/ban-img.png" class="img-fluid rounded-4 shadow-lg" alt="Village">
+					<img src="img/ban-img.png" class="img-fluid rounded-4 shadow-lg w-100" alt="Village">
 				</div>
 				<div class="col-lg-6" data-aos="fade-left">
 					<h2 class="tm-text-primary mb-4">📌 கிராம அறிமுகம்</h2>
 					<p class="fs-5"><strong>Siththaraja Kandigai</strong> கும்மிடிப்பூண்டி தாலுக்காவில் அமைந்துள்ள வளமான கிராமம். நெல், கரும்பு, காய்கறி பயிரிடப்படுகிறது. 100% குடிநீர், மின்சாரம், தார்ச்சாலை வசதிகள் பெற்ற கிராமம்.</p>
-					<div class="row mt-4">
+					<div class="row mt-4 g-3">
 						<div class="col-6">
 							<div class="bg-success bg-opacity-10 p-3 rounded-3 text-center">
 								<i class="fas fa-users fa-2x tm-text-primary"></i>
@@ -311,7 +435,7 @@
 							</div>
 						</div>
 					</div>
-					<a href="#services" class="tm-btn-primary mt-4">சேவைகள் அறிக →</a>
+					<a href="#services" class="tm-btn-primary mt-4 d-inline-block">சேவைகள் அறிக →</a>
 				</div>
 			</div>
 		</div>
@@ -405,7 +529,7 @@
 				</div>
 			</div>
 			<div class="text-center mt-4">
-				<a href="#" class="tm-btn-primary"><i class="fas fa-qrcode me-2"></i> ஆன்லைன் விண்ணப்பிக்க</a>
+				<a href="#" class="tm-btn-primary d-inline-block"><i class="fas fa-qrcode me-2"></i> ஆன்லைன் விண்ணப்பிக்க</a>
 			</div>
 		</div>
 	</section>
@@ -420,37 +544,37 @@
 			<div class="row g-4 tm-gallery">
 				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="100">
 					<a href="https://images.pexels.com/photos/172274/pexels-photo-172274.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
-						<img src="https://images.pexels.com/photos/172274/pexels-photo-172274.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Temple">
+						<img src="https://images.pexels.com/photos/172274/pexels-photo-172274.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid" alt="Temple">
 						<div class="overlay"><i class="fas fa-search-plus me-1"></i> கிராமக் கோயில்</div>
 					</a>
 				</div>
 				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
 					<a href="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
-						<img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Farming">
+						<img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid" alt="Farming">
 						<div class="overlay"><i class="fas fa-search-plus me-1"></i> விவசாயக் காட்சி</div>
 					</a>
 				</div>
 				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
 					<a href="https://images.pexels.com/photos/106852/pexels-photo-106852.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
-						<img src="https://images.pexels.com/photos/106852/pexels-photo-106852.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Lake">
+						<img src="https://images.pexels.com/photos/106852/pexels-photo-106852.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid" alt="Lake">
 						<div class="overlay"><i class="fas fa-search-plus me-1"></i> ஊர் ஏரி</div>
 					</a>
 				</div>
 				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="400">
 					<a href="https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
-						<img src="https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Street">
+						<img src="https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid" alt="Street">
 						<div class="overlay"><i class="fas fa-search-plus me-1"></i> புதிய சாலை</div>
 					</a>
 				</div>
 				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="500">
 					<a href="https://images.pexels.com/photos/1438834/pexels-photo-1438834.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
-						<img src="https://images.pexels.com/photos/1438834/pexels-photo-1438834.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Panchayat">
+						<img src="https://images.pexels.com/photos/1438834/pexels-photo-1438834.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid" alt="Panchayat">
 						<div class="overlay"><i class="fas fa-search-plus me-1"></i> பஞ்சாயத்து அலுவலகம்</div>
 					</a>
 				</div>
 				<div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="600">
 					<a href="https://images.pexels.com/photos/2603464/pexels-photo-2603464.jpeg?auto=compress&cs=tinysrgb&w=1200" class="gallery-link">
-						<img src="https://images.pexels.com/photos/2603464/pexels-photo-2603464.jpeg?auto=compress&cs=tinysrgb&w=600" alt="School">
+						<img src="https://images.pexels.com/photos/2603464/pexels-photo-2603464.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid" alt="School">
 						<div class="overlay"><i class="fas fa-search-plus me-1"></i> ஊராட்சி பள்ளி</div>
 					</a>
 				</div>
@@ -518,14 +642,7 @@
 				<div class="modern-table">
 					<table class="table mb-0">
 						<thead><tr><th>வார்டு எண்</th><th>உறுப்பினர் பெயர்</th><th>தொடர்பு எண்</th></tr></thead>
-						<tbody>
-							<tr><td>1</td><td>குமார்</td><td>98765 11111</td></tr>
-							<tr><td>2</td><td>மணிமேகலை</td><td>98765 22222</td></tr>
-							<tr><td>3</td><td>செல்வம்</td><td>98765 33333</td></tr>
-							<tr><td>4</td><td>அண்ணாதுரை</td><td>98765 44444</td></tr>
-							<tr><td>5</td><td>வசந்தி</td><td>98765 55555</td></tr>
-							<tr><td>6</td><td>முகேஷ்</td><td>98765 66666</td></tr>
-						</tbody>
+						<tbody><tr><td>1</td><td>குமார்</td><td>98765 11111</td></tr><tr><td>2</td><td>மணிமேகலை</td><td>98765 22222</td></tr><tr><td>3</td><td>செல்வம்</td><td>98765 33333</td></tr><tr><td>4</td><td>அண்ணாதுரை</td><td>98765 44444</td></tr><tr><td>5</td><td>வசந்தி</td><td>98765 55555</td></tr><tr><td>6</td><td>முகேஷ்</td><td>98765 66666</td></tr></tbody>
 					</table>
 				</div>
 			</div>
@@ -581,7 +698,7 @@
 			<div class="row justify-content-center" data-aos="fade-up">
 				<div class="col-lg-8">
 					<h2 class="tm-text-primary text-center mb-4">📢 புகார் & ஆலோசனை</h2>
-					<div class="card-hover p-5">
+					<div class="card-hover p-4 p-lg-5">
 						<form action="https://formspree.io/f/xgvogkna" method="POST">
 							<div class="row g-3">
 								<div class="col-md-6"><input type="text" name="name" class="form-control form-control-lg" placeholder="உங்கள் பெயர்" required></div>
@@ -610,7 +727,7 @@
 				<div class="col-md-4"><div class="contact-icon"><i class="fas fa-map-marker-alt fa-3x mb-3"></i><br><h5>முகவரி</h5><p>கும்மிடிப்பூண்டி தாலுகா, திருவள்ளூர் மாவட்டம்</p></div></div>
 			</div>
 			<div class="mt-5" data-aos="fade-up">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15544.162145750345!2d80.117767!3d13.145459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5264b7c0b0b0b1%3A0x0!2sGummidipoondi!5e0!3m2!1sen!2sin!4v1630000000000!5m2!1sen!2sin" width="100%" height="300" style="border:0;border-radius:20px;" allowfullscreen></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15544.162145750345!2d80.117767!3d13.145459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5264b7c0b0b0b1%3A0x0!2sGummidipoondi!5e0!3m2!1sen!2sin!4v1630000000000!5m2!1sen!2sin" width="100%" height="300" style="border:0;border-radius:20px;" allowfullscreen loading="lazy"></iframe>
 			</div>
 		</div>
 		<footer class="text-center p-4 mt-5">
